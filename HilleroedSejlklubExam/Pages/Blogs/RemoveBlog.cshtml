@@ -4,8 +4,24 @@
 @{
     ViewData["Title"] = "RemoveBlogs";
 }
-<h1>Blog oversigt</h1>
 
-<p>
-
-</p>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Blog.Id" class="control-label"></label>
+        <input asp-for="Blog.Id" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="Blog.PostedBy.Name" class="control-label"></label>
+        <input asp-for="Blog.PostedBy.Name" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="Blog.Title" class="control-label"></label>
+        <input asp-for="Blog.Title" class="form-control" readonly />
+    </div>
+    <div class="formgroup">
+        <button type="submit" value="@Model.Blog.Id" name="deleteId" class="btn btn-primary">Slet Blog</button>
+    </div>
+</form>
+<div>
+    <a asp-page="/Blogs/ShowBlog">Back to List</a>
+</div>
