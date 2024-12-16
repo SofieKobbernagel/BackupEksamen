@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HSLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,28 +7,19 @@ using System.Threading.Tasks;
 
 namespace HSConsoleApp.IO
 {
-    public class Input
+    public class Output
     {
-        public string Read()
+        public void Write(string text)
         {
-            return Console.ReadLine();
+            Console.WriteLine(text);
         }
 
-        public T SelectFromList<T>(List<T> list)
+        public void DisplayList<T>(List<T> list)
         {
-            int selectedId;
-            while (true)
+            Write($"Der er {list.Count} objekter:");
+            for (int i = 0; i < list.Count; i++)
             {
-                try
-                {
-                    selectedId = int.Parse(Read());
-                }
-                catch
-                {
-                    selectedId = -1;
-                }
-                if (selectedId < 0 || selectedId >= list.Count) continue;
-                return list[selectedId];
+                Write($"\t{i}# {list[i]}");
             }
         }
     }
