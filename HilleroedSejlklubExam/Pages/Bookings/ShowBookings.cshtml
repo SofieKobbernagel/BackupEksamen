@@ -1,0 +1,44 @@
+﻿@page
+@using HSLibrary.Models
+@model HilleroedSejlklubExam.Pages.Bookings.ShowBookingModel
+
+    @{
+        ViewData["Title"] = "ShowBookings";
+    }
+<h1>Antal klubmedlemmer  @Model.BookingList.Count </h1>
+<h1>Antal af Bookings @Model.Bookings.Count </h1>
+
+<p>
+    <a asp-page="AddBooking">Lav en ny booking</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Duration</th>
+            <th>End</th>
+            <th>Booked By</th>
+            <th>Booked Dinghy</th>
+            <th></th>
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var booking in Model.BookingList)
+            {
+            <tr>
+                <td>@booking.Id</td>
+                <td>@booking.Date</td>
+                <td>@booking.Duration</td>
+                <td>@booking.End</td>
+                <td>@booking.BookedBy.Name</td>
+                <td><a asp-page="/Dinghies/ShowSpecificDinghy" asp-route-showId="@booking.BookedDinghy.Id">@booking.BookedDinghy.Id</a></td>
+                <td><a asp-page="EditBooking" asp-route-id="@booking.Id">Rediger Booking</a></td>
+                <td><a asp-page="RemoveBooking" asp-route-deleteId="@booking.Id">Fjern Booking</a></td>
+            </tr>
+            }
+    </tbody>
+</table>

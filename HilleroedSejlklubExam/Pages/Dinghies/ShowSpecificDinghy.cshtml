@@ -1,0 +1,41 @@
+﻿@page
+@model HilleroedSejlklubExam.Pages.Dinghies.ShowSpecificDinghyModel
+@{
+    ViewData["Title"] = $"Show Dinghy {Model.Dinghy.Id}";
+}
+<h1>Jolle @Model.Dinghy.Id</h1>
+
+<b>Model: @Model.Dinghy.Model</b>
+<br />
+<b>Komponenter: @Model.Dinghy.Components</b>
+<br />
+<b>Tilstand: @(Model.Dinghy.NeedsRepair ? "Skal repareres" : "Er i fin stand")</b>
+<br />
+@{
+    if (Model.Dinghy.NeedsRepair)
+    {
+        <h2>Note for reparetion: @Model.Dinghy.RepairComment</h2>
+    }
+    if (Model.Dinghy.RepairLog.Count != 0)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Dato</th>
+                    <th>Summering</th>
+                    <th>Noter</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Dinghy.RepairLog)
+                {
+                    <tr>
+                        <td>@item.Date</td>
+                        <td>@item.Summary</td>
+                        <td>@item.Notes</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}

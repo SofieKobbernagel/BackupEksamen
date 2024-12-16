@@ -1,0 +1,57 @@
+﻿@page
+@model HilleroedSejlklubExam.Pages.Members.ShowMembersModel
+@{
+    ViewData["Title"] = "ShowMembers";
+}
+
+<h1>Antal klubmedlemmer  @Model.MemberList.Count </h1>
+
+<h1>Antal klubmedlemmer  @Model.MemberCount </h1>
+
+@* Skaber et link, som sender brugeren videre til siden "AddMember".*@
+<p>
+    <a asp-page="AddMember">Tilføj et nyt klubmedlem</a>
+</p>
+
+@*Opretter en tabel, som viser oplysninger om alle medlemmer*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Navn</th>
+            <th>Email</th>
+            <th>Fødselsdato</th>
+            <th>Tlf.Nr.</th>
+            <th>Har en nøgle</th>
+            <th>Billede</th>
+
+        </tr>
+    </thead>
+    @*Dynamisk indhold: Ved hjælp af @foreach-loopet itereres gennem alle medlemmer i Model.Member.
+    For hver medlem oprettes en ny række (<tr>) med data om medlemmet i celler (<td>).*@
+    <tbody>
+        @foreach (var member in Model.MemberList)
+        {
+            <tr>
+                <td>@member.Id</td>
+                <td>@member.Name</td>
+                <td>@member.Email</td>
+                <td>@member.Birthday</td>
+                <td>@member.Phone</td>
+                <td>@member.HasKey</td>
+                <td>@member.MemberImage</td>
+
+                @*Billede: For hver kunde vises et billede (hvis der er et tilknyttet billede)
+            Dette billede vises som en rund figur med en størrelse på 80x70 pixels.
+            <td>
+            <img src="~/Images/MemberImages/@member.MemberImage" class="rounded-circle" width="80" height="70" />
+            </td>*@
+
+                @*Rediger og Slet Links: For hver medlem er der links til at redigere og slette medlemmet.
+            Linksene bruger asp-page til at navigere til de relevante sider *@
+                <td><a asp-page="EditMember" asp-route-Id="@member.Id">Rediger medlem</a></td>
+                <td><a asp-page="DeleteMember" asp-route-deleteId="@member.Id">Fjern medlem</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

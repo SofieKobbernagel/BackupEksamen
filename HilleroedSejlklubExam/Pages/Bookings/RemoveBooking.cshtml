@@ -1,0 +1,39 @@
+﻿@page
+
+@model HilleroedSejlklubExam.Pages.Bookings.RemoveBookingModel
+@{
+        ViewData["Title"] = "Remove Booking";
+    }
+<h1>Remove Booking</h1>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Booking.Id" class="control-label">Id</label>
+        <input asp-for="Booking.Id" class="form-control" disabled />
+    </div>
+    <div class="form-group">
+        <label asp-for="Booking.Date" class="control-label">Date</label>
+        <input asp-for="Booking.Date" type="date" class="form-control" disabled />
+    </div>
+    <div class="form-group">
+        <label asp-for="Booking.Duration" class="control-label">Duration</label>
+        <input asp-for="Booking.Duration" class="form-control" disabled />
+    </div>
+    <div class="form-group">
+        <label asp-for="Booking.End" class="control-label">End</label>
+        <input asp-for="Booking.End" type="date" class="form-control" disabled />
+    </div>
+    <div class="form-group">
+        <label asp-for="Booking.BookedBy.Name" class="control-label">Booked Af</label>
+        <input asp-for="Booking.BookedBy.Name" class="form-control" disabled />
+    </div>
+    <div class="form-group">
+        <label asp-for="Booking.BookedDinghy.Id" class="control-label">Booked Jolle</label>
+        <input asp-for="Booking.BookedDinghy.Id" class="form-control" disabled />
+    </div>
+    <div class="formgroup">
+        <input type="submit" value="Slet" class="btn btn-danger" />
+    </div>
+</form>
+<div>
+    <a asp-page="/Bookings/ShowBooking">Tilbage til Bookings</a>
+</div>

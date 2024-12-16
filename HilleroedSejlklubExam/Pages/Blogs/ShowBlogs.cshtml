@@ -1,0 +1,45 @@
+﻿@page
+@using HSLibrary.Models
+@model HilleroedSejlklubExam.Pages.Blogs.ShowBlogModel
+@{
+    ViewData["Title"] = "ShowBlogs";
+}
+<h1>Blog oversigt</h1>
+<p>Total nummer af blog opslag: @Model.Blogs.Count</p>
+
+<p>
+    <a asp-page="AddBlog">Tilføj blog opslag</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Posted af</th>
+            <th>Posted den</th>
+            <th>Sidst opdateret</th>
+            <th>Tekst</th>
+            <th>Titel</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Blog blog in Model.Blogs)
+        {
+            <tr>
+                <td>@blog.Id</td>
+                <td>@blog.PostedBy.Name</td>
+                <td>@blog.PostedOn</td>
+                <td>@blog.LastUpdate</td>
+                <td>@blog.Text</td>
+                <td>@blog.Title</td>
+                @*
+            <td>
+            <img src="~/Images/@blog.Image" class="rounded-circle" width="80" height="70"/>
+            </td>
+            <td><a asp-page="EditBlog" asp-route-id="@blog.Id">Edit</a></td>
+            <td><a asp-page="DeleteBlog" asp-route-id="@blog.Id">Delete</a></td>
+            *@
+            </tr>
+        }
+    </tbody>
+</table>

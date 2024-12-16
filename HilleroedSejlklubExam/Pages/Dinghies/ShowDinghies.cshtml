@@ -1,0 +1,14 @@
+﻿@page
+@model HilleroedSejlklubExam.Pages.Dinghies.ShowDinghyModel
+@{
+    ViewData["Title"] = "Show Dinghies";
+}
+
+<h1>Disse er jollerne, der er @Model.DinghyList.Count joller</h1>
+<ul>
+    @foreach (var dinghy in Model.DinghyList)
+    {
+        <li><a asp-page="ShowSpecificDinghy" asp-route-showId="@dinghy.Id">@dinghy.ToString()</a></li>
+    }
+</ul>
+
