@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace HSLibrary.Models.Dinghy
 {
-    public enum FuelType { Diesel, Bensin, El, BioDiesel, VinDiesel }
+    public enum FuelType { Diesel, Bensin, BioDiesel }
 }
