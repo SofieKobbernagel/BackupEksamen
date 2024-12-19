@@ -42,7 +42,7 @@ namespace HSLibrary.Data
                 {4, new Dinghy(DinghyModel.Lynæs, "Hele Lynæs")},
                 {5, new Dinghy(DinghyModel.Optimistjolle , "Oppustelig gummi and")},
                 {6, new Dinghy(DinghyModel.Snipejolle, "blå snipe (en fugl)")},
-                {7, new MDinghy("Den har fandme lasere",FuelType.El ,5000, 2, 420)}
+                {7, new MDinghy("Den har fandme lasere",FuelType.BioDiesel ,5000, 2, 420)}
             };
 
         private static Dictionary<int, Booking> _bookingData =
